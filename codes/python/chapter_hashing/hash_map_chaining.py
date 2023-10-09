@@ -71,13 +71,13 @@ class HashMapChaining:
     def extend(self):
         """扩容哈希表"""
         # 暂存原哈希表
-        buckets = self.buckets
+        old_buckets = self.buckets
         # 初始化扩容后的新哈希表
         self.capacity *= self.extend_ratio
         self.buckets = [[] for _ in range(self.capacity)]
         self.size = 0
         # 将键值对从原哈希表搬运至新哈希表
-        for bucket in buckets:
+        for bucket in old_buckets:
             for pair in bucket:
                 self.put(pair.key, pair.val)
 
